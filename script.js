@@ -5,7 +5,10 @@ const sections = document.querySelectorAll('main section');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
+      // Remove active class from all links
       links.forEach((link) => link.classList.remove('active'));
+
+      // Add active class to links that point to the intersecting section
       document
         .querySelectorAll(`a[href="#${entry.target.id}"]`)
         .forEach((link) => link.classList.add('active'));
